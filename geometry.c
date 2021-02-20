@@ -66,7 +66,7 @@ int main()
         flag = 1;
         checkpoint = 1;
     }
-    if (flag == 0)
+    if (checkpoint == 0)
         if (strchr(str[2], 'a') != NULL || strchr(str[2], 'b') != NULL
             || strchr(str[2], 'c') != NULL || strchr(str[2], 'd') != NULL
             || strchr(str[2], 'e') != NULL || strchr(str[2], 'f') != NULL
@@ -97,7 +97,7 @@ int main()
             flag = 1;
             checkpoint = 1;
         }
-    if (flag == 0)
+    if (checkpoint == 0)
         if (strchr(str[3], 'a') != NULL || strchr(str[3], 'b') != NULL
             || strchr(str[3], 'c') != NULL || strchr(str[3], 'd') != NULL
             || strchr(str[3], 'e') != NULL || strchr(str[3], 'f') != NULL
