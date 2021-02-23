@@ -1,40 +1,58 @@
-
 #include <assert.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-void circle(int x, int y, float r);
+void circle(float x, float y, float r);
 const double pi = 3.14;
 int main()
 {
-    int m = 0;
-    float l = 0;
-    char stroka[200], str[100][100], pr[] = "( ) ,";
-    char checka[100] = "circle";
-    char *tmp, *p;
+    float checktypefloat = 0;
+    char checkingstring[200], str[100][100], pr[] = "( ) ,";
+    char checkingwordcircle[100] = "circle";
+    char *tmp, *p1, *p2;
     int i = 0;
     printf("Введите строку: ");
-    fgets(stroka, sizeof(stroka), stdin);
-    p = strchr(stroka, ')');
-    stroka[strlen(stroka) - 1] = '\0';
-    int flag = 0;
-    if (p == NULL) {
+    fgets(checkingstring, sizeof(checkingstring), stdin);
+    p1 = strchr(checkingstring, ')');
+    p2 = strrchr(checkingstring, ')');
+    checkingstring[strlen(checkingstring) - 1] = '\0';
+    int checkingexceptions = 0;
+    if (p1 == NULL) {
         printf("Error at column 13: expected ')'\n");
-        flag = 1;
+        checkingexceptions = 1;
     }
-    tmp = strtok(stroka, pr);
+    if (p1 != p2) {
+        printf("Error at column 16: expected only one ')'\n");
+        checkingexceptions = 1;
+    }
+    p1 = strchr(checkingstring, '(');
+    p2 = strrchr(checkingstring, '(');
+    if (p1 == NULL) {
+        printf("Error at column 13: expected '('\n");
+        checkingexceptions = 1;
+    }
+    if (p1 != p2) {
+        printf("Error at column 16: expected only one '('\n");
+        checkingexceptions = 1;
+    }
+    p1 = strchr(checkingstring, ',');
+    if (p1 == NULL) {
+        printf("Error at column 12: expected ','\n");
+        checkingexceptions = 1;
+    }
+    tmp = strtok(checkingstring, pr);
     while (tmp != NULL) {
         strncpy(str[i], tmp, 100);
         tmp = strtok(NULL, pr);
         i++;
     }
-    int n = i;
-    int checkpoint = 0;
-    int number1;
-    int number2;
-    float number3;
+    int numberofelements = i;
+    int checkexceptionstypedouble = 0;
+    float znacheniex;
+    float znacheniey;
+    float znachenieR;
     ////////////////////////////////////////////////////////////
     if (strchr(str[1], 'a') != NULL || strchr(str[1], 'b') != NULL
         || strchr(str[1], 'c') != NULL || strchr(str[1], 'd') != NULL
@@ -63,10 +81,10 @@ int main()
         || strchr(str[1], 'W') != NULL || strchr(str[1], 'X') != NULL
         || strchr(str[1], 'Y') != NULL || strchr(str[1], 'Z') != NULL) {
         printf("Error at column 7: expected '<double>'\n");
-        flag = 1;
-        checkpoint = 1;
+        checkingexceptions = 1;
+        checkexceptionstypedouble = 1;
     }
-    if (checkpoint == 0)
+    if (checkexceptionstypedouble == 0)
         if (strchr(str[2], 'a') != NULL || strchr(str[2], 'b') != NULL
             || strchr(str[2], 'c') != NULL || strchr(str[2], 'd') != NULL
             || strchr(str[2], 'e') != NULL || strchr(str[2], 'f') != NULL
@@ -89,15 +107,16 @@ int main()
             || strchr(str[2], 'M') != NULL || strchr(str[2], 'N') != NULL
             || strchr(str[2], 'O') != NULL || strchr(str[2], 'P') != NULL
             || strchr(str[2], 'Q') != NULL || strchr(str[2], 'R') != NULL
-            || strchr(str[2], 'S') != NULL || strchr(str[2], 'T') != NULL
-            || strchr(str[2], 'U') != NULL || strchr(str[2], 'V') != NULL
+            || strchr(str[2], 'S') != NULL || strchr(str[2], 'T') != NULL ||
+
+            strchr(str[2], 'U') != NULL || strchr(str[2], 'V') != NULL
             || strchr(str[2], 'W') != NULL || strchr(str[2], 'X') != NULL
             || strchr(str[2], 'Y') != NULL || strchr(str[2], 'Z') != NULL) {
             printf("Error at column 7: expected '<double>'\n");
-            flag = 1;
-            checkpoint = 1;
+            checkingexceptions = 1;
+            checkexceptionstypedouble = 1;
         }
-    if (checkpoint == 0)
+    if (checkexceptionstypedouble == 0)
         if (strchr(str[3], 'a') != NULL || strchr(str[3], 'b') != NULL
             || strchr(str[3], 'c') != NULL || strchr(str[3], 'd') != NULL
             || strchr(str[3], 'e') != NULL || strchr(str[3], 'f') != NULL
@@ -126,36 +145,44 @@ int main()
             || strchr(str[3], 'W') != NULL || strchr(str[3], 'X') != NULL
             || strchr(str[3], 'Y') != NULL || strchr(str[3], 'Z') != NULL) {
             printf("Error at column 7: expected '<double>'\n");
-            flag = 1;
-            checkpoint = 1;
+            checkingexceptions = 1;
+            checkexceptionstypedouble = 1;
         }
-    if (checkpoint != 1) {
-        number1 = atoi(str[1]);
-        number2 = atoi(str[2]);
-        number3 = atof(str[3]);
+    if (checkexceptionstypedouble != 1) {
+        znacheniex = atof(str[1]);
+        znacheniey = atof(str[2]);
+        znachenieR = atof(str[3]);
     }
-    if (n > 4) {
+    if (numberofelements > 4) {
         printf("Error at column 15: unexpected token \n");
-        flag = 1;
+        checkingexceptions = 1;
     }
-    if (strcmp(str[0], checka) != 0) {
+    if (numberofelements < 4) {
+        printf("Error at column 14: you need to write x,y and R in () \n");
+        checkingexceptions = 1;
+    }
+    if (strcmp(str[0], checkingwordcircle) != 0) {
         printf("Error at column 0: expected 'circle'\n");
-        flag = 1;
+        checkingexceptions = 1;
     }
 
-    if (sizeof(number1) == sizeof(m) && sizeof(number2) == sizeof(m)
-        && sizeof(number3) == sizeof(l))
+    if (sizeof(znacheniex) == sizeof(checktypefloat)
+        && sizeof(znacheniey) == sizeof(checktypefloat)
+        && sizeof(znachenieR) == sizeof(checktypefloat))
         printf("%c", '\0');
     else {
         printf("Error at column 7: expected '<double>'");
-        flag = 1;
+        checkingexceptions = 1;
     }
-    if (flag == 0) {
+    if (checkingexceptions == 1) {
+        printf("For example: circle (x y, r)\n");
+    }
+    if (checkingexceptions == 0) {
         printf("All correct\n");
     }
 }
 ////////////////////////////////////////////////
-// void circle(int x, int y, float r)
+// void circle(float x, float y, float r)
 // {
 // double perimetr = 0;
 // double area = 0;
