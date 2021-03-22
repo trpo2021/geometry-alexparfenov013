@@ -6,7 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-const double pi = 3.14;
+void circlevoid(float x, float y, float r);
+
 int main()
 {
 
@@ -142,11 +143,17 @@ int main()
     }
     ///////////////////////////////////////////
     char* tempforstrchecking;
-    int checkingpositiondot = 0, checkingpositiondotexceptions = 0;
+    int checkingpositiondot = 1, checkingpositiondotexceptions = 0;
+    int checkingStrLenx;
+    int checkingStrLeny;
+    int checkingStrLenr;
+    checkingStrLenx = strlen(str[1]);
+    checkingStrLeny = strlen(str[2]);
+    checkingStrLenr = strlen(str[3]);
     if (strchr(str[1], '.') != NULL) {
         tempforstrchecking = strchr(str[1], '.');
         checkingpositiondot = tempforstrchecking - str[1] + 1;
-        if (checkingpositiondot == strlen(str[1])) {
+        if (checkingpositiondot == checkingStrLenx) {
             printf("Error at column 22: number. you need to write value after "
                    "dot \n");
             checkingexceptions = 1;
@@ -158,7 +165,7 @@ int main()
         if (strchr(str[2], '.') != NULL) {
             tempforstrchecking = strchr(str[2], '.');
             checkingpositiondot = tempforstrchecking - str[2] + 1;
-            if (checkingpositiondot == strlen(str[2])) {
+            if (checkingpositiondot == checkingStrLeny) {
                 printf("Error at column 22: number. you need to write value "
                        "after dot \n");
                 checkingexceptions = 1;
@@ -172,7 +179,7 @@ int main()
         if (strchr(str[3], '.') != NULL) {
             tempforstrchecking = strchr(str[3], '.');
             checkingpositiondot = tempforstrchecking - str[3] + 1;
-            if (checkingpositiondot == strlen(str[3])) {
+            if (checkingpositiondot == checkingStrLenr) {
                 printf("Error at column 22: number. you need to write value "
                        "after dot \n");
                 checkingexceptions = 1;
@@ -221,7 +228,7 @@ int main()
     float valuex = atof(str[1]);
     float valuey = atof(str[2]);
     float valuer = atof(str[3]);
-    circle(valuex, valuey, valuer);
+    circlevoid(valuex, valuey, valuer);
     }
     if (checkingexceptions == 1) {
         printf("For example: circle (x y, r)\n");
