@@ -1,3 +1,3 @@
 #pragma once
 
-void circle();
+void circlevoid(float x, float y, float r);
