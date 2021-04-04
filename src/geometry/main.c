@@ -6,96 +6,65 @@
 #include <stdlib.h>
 #include <string.h>
 
-void circlevoid(float x, float y, float r);
-
 int main()
 {
-
     char checkingstring[200], str[100][100], pr[] = "( ) ,",
                                              checkingstringtemp[200];
     char checkingwordcircle[100] = "circle";
     int checkexceptionstypedouble = 0;
     int checkingexceptions = 0;
-    char *tmp, *p1, *p2;
+    char* tmp;
     int i = 0;
     printf("Введите строку: ");
     fgets(checkingstring, sizeof(checkingstring), stdin);
-    p1 = strchr(checkingstring, ')');
-    p2 = strrchr(checkingstring, ')');
     checkingstring[strlen(checkingstring) - 1] = '\0';
-    if (p1 == NULL) {
-        printf("Error at column 13: expected ')'\n");
+    if (checkingexceptionCheckingOnBracket(checkingstring)) {
+        printf("Error at column 13: expected ')' or '('\n");
         checkingexceptions = 1;
     }
-    if (p1 != p2) {
-        printf("Error at column 16: expected only one ')'\n");
+    if (checkingexceptionCheckingOnTwoBrackets(checkingstring)) {
+        printf("Error at column 16: find two or more ')' or '('\n");
         checkingexceptions = 1;
     }
-    p1 = strchr(checkingstring, '(');
-    p2 = strrchr(checkingstring, '(');
-    if (p1 == NULL) {
-        printf("Error at column 13: expected '('\n");
-        checkingexceptions = 1;
-    }
-    if (p1 != p2) {
-        printf("Error at column 16: expected only one '('\n");
-        checkingexceptions = 1;
-    }
-    p1 = strchr(checkingstring, ',');
-    p2 = strrchr(checkingstring, ',');
-    if (p1 == NULL) {
+    if (checkingexceptionCheckComma(checkingstring)) {
         printf("Error at column 12: expected ','\n");
         checkingexceptions = 1;
     }
-    if (p1 != p2) {
+    if (checkingexceptionCheckMoreOneComma(checkingstring)) {
         printf("Error at column 17: expected only one ','\n");
         checkingexceptions = 1;
     }
-    char tempZ = '&';
-    for (char tempA = '!'; tempA <= tempZ; tempA++) {
-        if (strchr(checkingstring, tempA) != NULL) {
-            printf("Error at column 7: expected '<double>'\n");
-            checkingexceptions = 1;
-            checkexceptionstypedouble = 1;
-        }
-    }
-    if (strchr(checkingstring, '/') != NULL
-        || strchr(checkingstring, '+') != NULL
-        || strchr(checkingstring, '*') != NULL
-        || strchr(checkingstring, 39) != NULL) {
-        printf("Error at column 7: expected '<double>'\n");
-        checkingexceptions = 1;
-        checkexceptionstypedouble = 1;
-    }
-    ////////////////
-    char* postempcomma;
-    int poscomma;
-    postempcomma = strchr(checkingstring, ',');
-    poscomma = postempcomma - checkingstring + 1;
-    strcpy(checkingstringtemp, checkingstring);
-    ///////////////////////////
-    char* postempcircle;
-    int poscircle;
-    postempcircle = strstr(checkingstring, checkingwordcircle);
-    poscircle = postempcircle - checkingstring + 1;
-    if (poscircle != 1) {
+    if (checkingexceptionPosCircle(checkingstring, checkingwordcircle)) {
         printf("Error at column 25: you need to write circle on 1st position "
                "without space \n");
         checkingexceptions = 1;
     }
-    tmp = strtok(checkingstring, pr);
+    if (checkingexceptionCheckingSomeSymbols(checkingstring)) {
+        printf("Error at column 7: expected '<double>'\n");
+        checkexceptionstypedouble = 1;
+        checkingexceptions = 1;
+    }
+     strcpy(checkingstringtemp, checkingstring);
+     tmp = strtok(checkingstring, pr);
     while (tmp != NULL) {
         strncpy(str[i], tmp, 100);
         tmp = strtok(NULL, pr);
         i++;
     }
+
+    ////////////////
+    char* postempcomma;
+    int poscomma;
+    postempcomma = strchr(checkingstringtemp, ',');
+    poscomma = postempcomma  - checkingstringtemp + 1;
+    ///////////////////////////
     int numberofelements = i;
     int checkingexceptionsdotbeforenumber = 0;
     ////////////////////////////////////////////////////////////
     char* postempvaluey;
     int positionvaluey;
     postempvaluey = strstr(checkingstringtemp, str[2]);
-    positionvaluey = postempvaluey - checkingstringtemp + 1;
+    positionvaluey = postempvaluey - checkingstringtemp+ 1;
     if (poscomma < positionvaluey) {
         printf("Error at column 24: , not before value R \n");
         checkingexceptions = 1;
@@ -225,12 +194,13 @@ int main()
         checkingexceptions = 1;
     }
     if (checkingexceptions == 0) {
-    float valuex = atof(str[1]);
-    float valuey = atof(str[2]);
-    float valuer = atof(str[3]);
-    circlevoid(valuex, valuey, valuer);
+        float valuex = atof(str[1]);
+        float valuey = atof(str[2]);
+        float valuer = atof(str[3]);
+        circlevoid(valuex, valuey, valuer);
     }
     if (checkingexceptions == 1) {
         printf("For example: circle (x y, r)\n");
     }
 }
+
