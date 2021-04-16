@@ -7,3 +7,4 @@ int checkingexceptionCheckingOnTwoBrackets(char* checkingstring);
 int checkingexceptionCheckComma(char* checkingstring);
 int checkingexceptionCheckMoreOneComma(char* checkingstring);
 int checkingexceptionCheckingSomeSymbols(char* checkingstring);
+int checkingOtherExceptions(char* checkingstring);
