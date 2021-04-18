@@ -118,7 +118,7 @@ CTEST(name_check, correct_name)
 
 CTEST(name_check, incorrect_name)
 {
-    char checkingstring = {"(1 2, 3) circle"}, checkingwordcircle = {"circle"};
+    char checkingstring = {"(1 2, 3)circle"}, checkingwordcircle = {"circle"};
 
     int real = checkingexceptionCheckingOnBracket(
             checkingstring, checkingwordcircle);
@@ -130,7 +130,7 @@ CTEST(name_check, incorrect_name)
 
 CTEST(name_check, correct_name)
 {
-    char checkingstring = {"circle (1 2, 3)"}, checkingwordcircle = {"circle"};
+    char checkingstring = {"circle(1 2, 3)"}, checkingwordcircle = {"circle"};
 
     int real = checkingexceptionCheckingOnBracket(
             checkingstring, checkingwordcircle);
@@ -142,7 +142,7 @@ CTEST(name_check, correct_name)
 
 CTEST(name_check, incorrect_name_1)
 {
-    char checkingstring = {"circle (1. 2, 3)"};
+    char checkingstring = {"circle(1. 2, 3)"};
 
     int real = checkingOtherExceptions(checkingstring);
 
@@ -153,7 +153,7 @@ CTEST(name_check, incorrect_name_1)
 
 CTEST(name_check, incorrect_name_2)
 {
-    char checkingstring = {"circle (. 2, 3)"};
+    char checkingstring = {"circle(. 2, 3)"};
 
     int real = checkingOtherExceptions(checkingstring);
 
@@ -164,7 +164,7 @@ CTEST(name_check, incorrect_name_2)
 
 CTEST(name_check, correct_name)
 {
-    char checkingstring = {"circle 1 2, 3)"};
+    char checkingstring = {"circle(1 2, 3)"};
 
     int real = checkingOtherExceptions(checkingstring);
 
