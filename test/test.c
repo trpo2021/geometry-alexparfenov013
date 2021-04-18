@@ -8,7 +8,7 @@ CTEST(suite, system_testing)
 
 CTEST(name_check, incorrect_name)
 {
-    char checkingstring = {"circle(1* 2)"};
+    char checkingstring = {"circle(1* 2, 3)"};
 
     int real = checkingexceptionCheckingSomeSymbols(checkingstring);
 
