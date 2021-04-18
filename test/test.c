@@ -6,7 +6,7 @@ CTEST(suite, system_testing)
     ASSERT_EQUAL(1 + 2, 3);
 }
 
-CTEST(name_check, incorrect_name)
+CTEST(namecheck, incorrectname)
 {
     char* checkingstring = "circle(1* 2*, 3)";
 
@@ -17,7 +17,7 @@ CTEST(name_check, incorrect_name)
     ASSERT_EQUAL(exp, real);
 }
 
-CTEST(name_check, correct_name)
+CTEST(namecheck, correctname)
 {
     char* checkingstring = "circle(1 2, 3)";
 
@@ -28,7 +28,7 @@ CTEST(name_check, correct_name)
     ASSERT_EQUAL(exp, real);
 }
 
-CTEST(name_check, incorrect_name)
+CTEST(namecheck, incorrectname)
 {
     char* checkingstring = "circle(1, 2, 3)";
 
@@ -39,7 +39,7 @@ CTEST(name_check, incorrect_name)
     ASSERT_EQUAL(exp, real);
 }
 
-CTEST(name_check, correct_name)
+CTEST(namecheck, correctname)
 {
     char* checkingstring = "circle(1 2, 3)";
 
@@ -50,7 +50,7 @@ CTEST(name_check, correct_name)
     ASSERT_EQUAL(exp, real);
 }
 
-CTEST(name_check, incorrect_name)
+CTEST(namecheck, incorrectname)
 {
     char* checkingstring = "circle(1 2 3)";
 
@@ -61,7 +61,7 @@ CTEST(name_check, incorrect_name)
     ASSERT_EQUAL(exp, real);
 }
 
-CTEST(name_check, correct_name)
+CTEST(namecheck, correctname)
 {
     char* checkingstring = "circle(1 2, 3)";
 
@@ -72,7 +72,7 @@ CTEST(name_check, correct_name)
     ASSERT_EQUAL(exp, real);
 }
 
-CTEST(name_check, incorrect_name)
+CTEST(namecheck, incorrectname)
 {
     char* checkingstring = "circle((1 2, 3))";
 
@@ -83,7 +83,7 @@ CTEST(name_check, incorrect_name)
     ASSERT_EQUAL(exp, real);
 }
 
-CTEST(name_check, correct_name)
+CTEST(namecheck, correctname)
 {
     char* checkingstring = "circle(1 2, 3)";
 
@@ -94,7 +94,7 @@ CTEST(name_check, correct_name)
     ASSERT_EQUAL(exp, real);
 }
 
-CTEST(name_check, incorrect_name)
+CTEST(namecheck, incorrectname)
 {
     char* checkingstring = "circle 1 2, 3";
 
@@ -105,7 +105,7 @@ CTEST(name_check, incorrect_name)
     ASSERT_EQUAL(exp, real);
 }
 
-CTEST(name_check, correct_name)
+CTEST(namecheck, correctname)
 {
     char* checkingstring = "circle (1 2, 3)";
 
@@ -116,7 +116,7 @@ CTEST(name_check, correct_name)
     ASSERT_EQUAL(exp, real);
 }
 
-CTEST(name_check, incorrect_name)
+CTEST(namecheck, incorrectname)
 {
     char *checkingstring = "(1 2, 3)circle", *checkingwordcircle = "circle";
 
@@ -127,7 +127,7 @@ CTEST(name_check, incorrect_name)
     ASSERT_EQUAL(exp, real);
 }
 
-CTEST(name_check, correct_name)
+CTEST(namecheck, correctname)
 {
     char *checkingstring = "circle(1 2, 3)", *checkingwordcircle = "circle";
 
