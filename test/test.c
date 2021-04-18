@@ -8,7 +8,7 @@ CTEST(suite, system_testing)
 
 CTEST(name_check, incorrect_name)
 {
-    char checkingstring = {"circle(1* 2, 3)"};
+    char* checkingstring = "circle(1* 2*, 3)";
 
     int real = checkingexceptionCheckingSomeSymbols(checkingstring);
 
@@ -19,7 +19,7 @@ CTEST(name_check, incorrect_name)
 
 CTEST(name_check, correct_name)
 {
-    char checkingstring = {"circle(1 2, 3)"};
+    char* checkingstring = "circle(1 2, 3)";
 
     int real = checkingexceptionCheckingSomeSymbols(checkingstring);
 
@@ -30,7 +30,7 @@ CTEST(name_check, correct_name)
 
 CTEST(name_check, incorrect_name)
 {
-    char checkingstring = {"circle(1, 2, 3)"};
+    char* checkingstring = "circle(1, 2, 3)";
 
     int real = checkingexceptionCheckMoreOneComma(checkingstring);
 
@@ -41,7 +41,7 @@ CTEST(name_check, incorrect_name)
 
 CTEST(name_check, correct_name)
 {
-    char checkingstring = {"circle(1 2, 3)"};
+    char* checkingstring = "circle(1 2, 3)";
 
     int real = checkingexceptionCheckMoreOneComma(checkingstring);
 
@@ -52,7 +52,7 @@ CTEST(name_check, correct_name)
 
 CTEST(name_check, incorrect_name)
 {
-    char checkingstring = {"circle(1 2 3)"};
+    char* checkingstring = "circle(1 2 3)";
 
     int real = checkingexceptionCheckComma(checkingstring);
 
@@ -63,7 +63,7 @@ CTEST(name_check, incorrect_name)
 
 CTEST(name_check, correct_name)
 {
-    char checkingstring = {"circle(1 2, 3)"};
+    char* checkingstring = "circle(1 2, 3)";
 
     int real = checkingexceptionCheckComma(checkingstring);
 
@@ -74,7 +74,7 @@ CTEST(name_check, correct_name)
 
 CTEST(name_check, incorrect_name)
 {
-    char checkingstring = {"circle((1 2, 3))"};
+    char* checkingstring = "circle((1 2, 3))";
 
     int real = checkingexceptionCheckingOnTwoBrackets(checkingstring);
 
@@ -85,7 +85,7 @@ CTEST(name_check, incorrect_name)
 
 CTEST(name_check, correct_name)
 {
-    char checkingstring = {"circle(1 2, 3)"};
+    char* checkingstring = "circle(1 2, 3)";
 
     int real = checkingexceptionCheckingOnTwoBrackets(checkingstring);
 
@@ -96,7 +96,7 @@ CTEST(name_check, correct_name)
 
 CTEST(name_check, incorrect_name)
 {
-    char checkingstring = {"circle 1 2, 3"};
+    char* checkingstring = "circle 1 2, 3";
 
     int real = checkingexceptionCheckingOnBracket(checkingstring);
 
@@ -107,7 +107,7 @@ CTEST(name_check, incorrect_name)
 
 CTEST(name_check, correct_name)
 {
-    char checkingstring = {"circle (1 2, 3)"};
+    char* checkingstring = "circle (1 2, 3)";
 
     int real = checkingexceptionCheckingOnBracket(checkingstring);
 
@@ -118,10 +118,9 @@ CTEST(name_check, correct_name)
 
 CTEST(name_check, incorrect_name)
 {
-    char checkingstring = {"(1 2, 3)circle"}, checkingwordcircle = {"circle"};
+    char *checkingstring = "(1 2, 3)circle", *checkingwordcircle = "circle";
 
-    int real = checkingexceptionCheckingOnBracket(
-            checkingstring, checkingwordcircle);
+    int real = checkingexceptionPosCircle(checkingstring, checkingwordcircle);
 
     int exp = 1;
 
@@ -130,10 +129,9 @@ CTEST(name_check, incorrect_name)
 
 CTEST(name_check, correct_name)
 {
-    char checkingstring = {"circle(1 2, 3)"}, checkingwordcircle = {"circle"};
+    char *checkingstring = "circle(1 2, 3)", *checkingwordcircle = "circle";
 
-    int real = checkingexceptionCheckingOnBracket(
-            checkingstring, checkingwordcircle);
+    int real = checkingexceptionPosCircle(checkingstring, checkingwordcircle);
 
     int exp = 0;
 
@@ -142,7 +140,7 @@ CTEST(name_check, correct_name)
 
 CTEST(name_check, incorrect_name_1)
 {
-    char checkingstring = {"circle(1. 2, 3)"};
+    char* checkingstring = "circle(1. 2, 3)";
 
     int real = checkingOtherExceptions(checkingstring);
 
@@ -153,7 +151,7 @@ CTEST(name_check, incorrect_name_1)
 
 CTEST(name_check, incorrect_name_2)
 {
-    char checkingstring = {"circle(. 2, 3)"};
+    char* checkingstring = "circle(. 2, 3)";
 
     int real = checkingOtherExceptions(checkingstring);
 
@@ -164,7 +162,7 @@ CTEST(name_check, incorrect_name_2)
 
 CTEST(name_check, correct_name)
 {
-    char checkingstring = {"circle(1 2, 3)"};
+    char* checkingstring = "circle(1 2, 3)";
 
     int real = checkingOtherExceptions(checkingstring);
 
