@@ -1,10 +1,5 @@
-#include "libgeometry/geometry.h"
 #include "ctest.h"
-
-CTEST(suite, system_testing)
-{
-    ASSERT_EQUAL(1 + 2, 3);
-}
+#include "libgeometry/geometry.h"
 
 CTEST(namecheck1, incorrectname1)
 {
