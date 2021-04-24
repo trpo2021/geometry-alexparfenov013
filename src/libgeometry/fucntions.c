@@ -7,7 +7,7 @@
 #include <string.h>
 const double pi = 3.14;
 
-void circlevoid(float x, float y, float r)
+void circleFunction(float x, float y, float r)
 {
     double perimetr = 0;
     double area = 0;

@@ -7,4 +7,4 @@ int checkingexceptionCheckComma(char* checkingstring);
 int checkingexceptionCheckMoreOneComma(char* checkingstring);
 int checkingexceptionCheckingSomeSymbols(char* checkingstring);
 int checkingOtherExceptions(char* checkingstring);
-void circlevoid(float x, float y, float r);
+void circleFunction(float x, float y, float r);

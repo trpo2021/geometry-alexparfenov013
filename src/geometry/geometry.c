@@ -57,7 +57,7 @@ int main()
         valuex = atof(str[1]);
         valuey = atof(str[2]);
         valuer = atof(str[3]);
-        circlevoid(valuex, valuey, valuer);
+        circleFunction(valuex, valuey, valuer);
     }
 }
 
