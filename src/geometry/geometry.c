@@ -9,6 +9,7 @@
 int main()
 {
     char checkingstring[200], str[100][100], pr[] = "( ) ,";
+    float valuex, valuey, valuer;
     char checkingstringtemp2[200], *tmp;
     char checkingwordcircle[100] = "circle";
     int checkingexceptions = 0, i = 0;
@@ -53,9 +54,9 @@ int main()
         checkingexceptions = 1;
     }
     if (checkingexceptions == 0) {
-        float valuex = atof(str[1]);
-        float valuey = atof(str[2]);
-        float valuer = atof(str[3]);
+        valuex = atof(str[1]);
+        valuey = atof(str[2]);
+        valuer = atof(str[3]);
         circlevoid(valuex, valuey, valuer);
     }
 }
