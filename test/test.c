@@ -40,7 +40,7 @@ CTEST(namecheck4, correctname4)
 
     int real = checkingexceptionCheckMoreOneComma(checkingstring);
 
-    int exp = 1;
+    int exp = 0;
 
     ASSERT_EQUAL(exp, real);
 }
