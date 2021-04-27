@@ -133,35 +133,35 @@ CTEST(namecheck12, correctname12)
     ASSERT_EQUAL(exp, real);
 }
 
-CTEST(namecheck13, incorrectname13)
-{
-    char* checkingstring = "circle(1. 2, 3)";
+// CTEST(namecheck13, incorrectname13)
+// {
+//     char* checkingstring = "circle(1. 2, 3)";
 
-    int real = checkingOtherExceptions(checkingstring);
+//     int real = checkingOtherExceptions(checkingstring);
 
-    int exp = 1;
+//     int exp = 1;
 
-    ASSERT_EQUAL(exp, real);
-}
+//     ASSERT_EQUAL(exp, real);
+// }
 
-CTEST(namecheck14, incorrectname14)
-{
-    char* checkingstring = "circle(. 2, 3)";
+// CTEST(namecheck14, incorrectname14)
+// {
+//     char* checkingstring = "circle(. 2, 3)";
 
-    int real = checkingOtherExceptions(checkingstring);
+//     int real = checkingOtherExceptions(checkingstring);
 
-    int exp = 1;
+//     int exp = 1;
 
-    ASSERT_EQUAL(exp, real);
-}
+//     ASSERT_EQUAL(exp, real);
+// }
 
-CTEST(namecheck15, correctname15)
-{
-    char* checkingstring = "circle(1 2, 3)";
+// CTEST(namecheck15, correctname15)
+// {
+//     char* checkingstring = "circle(1 2, 3)";
 
-    int real = checkingOtherExceptions(checkingstring);
+//     int real = checkingOtherExceptions(checkingstring);
 
-    int exp = 0;
+//     int exp = 0;
 
-    ASSERT_EQUAL(exp, real);
-}
+//     ASSERT_EQUAL(exp, real);
+// }
